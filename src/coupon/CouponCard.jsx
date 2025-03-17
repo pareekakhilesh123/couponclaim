@@ -13,7 +13,7 @@ const CouponCard = () => {
 
     const fetchCoupons = async () => {
         try {
-            const response = await axios.get("http://localhost:5000/coupons");
+            const response = await axios.get("https://couponclaimbackend-fvwe.onrender.com/coupons");
             setCoupons(response.data.coupons);
         } catch (error) {
             console.error("Error fetching coupons:", error);
@@ -27,7 +27,7 @@ const CouponCard = () => {
         localStorage.setItem("browser_cookie", browserCookie);
 
         try {
-            const response = await axios.post("http://localhost:5000/claim", { browser_cookie: browserCookie });
+            const response = await axios.post("https://couponclaimbackend-fvwe.onrender.com/claim", { browser_cookie: browserCookie });
             alert(response.data.message);
             setClaimedCoupons((prev) => new Set(prev).add(couponId));
         } catch (error) {
